@@ -9,6 +9,7 @@ use App\Visimisi;
 use App\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -103,18 +104,34 @@ class AdminController extends Controller
 
     public function adminadd(Request $req)
     {
-        Admin::create($req->all());
+        $password = Hash::make('admin123', [
+            'rounds' => 10
+        ]);
+        $dataadmin = new Request([
+            'nama' => $req->nama,
+            'username' => $req->username,
+            'password' => $password,
+            'level' => '1',
+            'status' => '1'
+        ]);
+        Admin::create($dataadmin->all());
         return redirect('/admin/administrator');
     }
 
     public function ubahpass(Request $req)
     {
         $dataadmin = Admin::where('username', $req->username)->get();
-        $password = $dataadmin[0]['password'];
-        if ($req->passwordlama == $password) {
-            if ($req->passwordbaru == $req->passwordbarukonfirm) {
+        $passbaru = trim($req->passwordbaru);
+        $passbarukonfirm = trim($req->passwordbarukonfirm);
+        $passwordlamadb = trim($dataadmin[0]['password']);
+        $passwordlama = trim($req->passwordlama);
+        if (Hash::check($passwordlama, $passwordlamadb)) {
+            if ($passbarukonfirm == $passbaru) {
+                $passbaruhash = Hash::make($passbarukonfirm, [
+                    'rounds' => 10
+                ]);
                 Admin::where('username', $req->username)->update([
-                    'password' => $req->passwordbaru
+                    'password' => $passbaruhash
                 ]);
                 return redirect('/admin/setting/ubahpassword')->with('info', 'Password Berhasil Diganti')->with('warna', 'success');
             } else {
@@ -128,8 +145,9 @@ class AdminController extends Controller
     public function ubahdata(Request $req)
     {
         $dataadmin = Admin::where('id', $req->iduser)->get();
-        $password = $dataadmin[0]['password'];
-        if ($req->password == $password) {
+        $password = trim($dataadmin[0]['password']);
+        $passwordkonfirm = trim($req->password);
+        if (Hash::check($passwordkonfirm, $password)) {
             Admin::where('id', $req->iduser)->update([
                 'username' => $req->usernamebaru,
                 'nama' => $req->namalengkap

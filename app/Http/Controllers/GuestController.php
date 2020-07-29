@@ -8,6 +8,7 @@ use App\Admin;
 use App\Visimisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class GuestController extends Controller
 {
@@ -47,12 +48,18 @@ class GuestController extends Controller
 
     public function loginadmin(Request $data)
     {
-        $dataadmin = Admin::where('username', $data->username)->where('password', $data->password)->where('status', 1)->get();
-        if (count($dataadmin) > 0) {
-            Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
-            return redirect('admin/dashboard');
+        $dataadmin = Admin::where('username', $data->username)->get();
+        $pass = trim($data->password);
+        $hash = trim($dataadmin[0]->password);
+        if (Hash::check($pass, $hash)) {
+            if ($dataadmin[0]->status == 1) {
+                Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
+                return redirect('admin/dashboard');
+            } else {
+                return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
+            }
         } else {
-            return redirect('/adminlogin')->with('gagal', 'Data Login Anda Tidak Sesuai');
+            return redirect('/adminlogin')->with('gagal', 'Password Yang Anda Masukkan Salah. Silahkan Ulangi!');
         }
     }
 

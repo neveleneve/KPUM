@@ -109,9 +109,6 @@
                         required>
                     <input class="form-control mb-3" type="text" placeholder="Username" id="username" name="username"
                         required>
-                    <input type="hidden" id="password" name="password" value="123456">
-                    <input type="hidden" id="level" name="level" value="1">
-                    <input type="hidden" id="status" name="status" value="1">
                     <div class="row">
                         <div class="col-6">
                             <a class="btn btn-sm btn-danger btn-block text-light" data-dismiss="modal">Kembali</a>
