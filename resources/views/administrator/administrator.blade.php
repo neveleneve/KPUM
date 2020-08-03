@@ -20,7 +20,7 @@
             @if (Auth::user()->level == 0)
             <div class="row mb-3">
                 <div class="col-12">
-                    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modaltambahadmin">
+                    <button class="btn btn-outline-danger btn-flat btn-block" data-toggle="modal" data-target="#modaltambahadmin">
                         Tambah Data Admin
                     </button>
                 </div>
@@ -31,7 +31,7 @@
             <div class="row mb-3">
                 <div class="col-12">
                     <table class="table table-hover table-bordered">
-                        <thead class="bg-dark text-center">
+                        <thead class="bg-danger text-center">
                             <tr>
                                 <th>No</th>
                                 <th>Nama Admin</th>
@@ -56,22 +56,22 @@
                                 </td>
                                 <td class="text-center">
                                     @if (Auth::user()->username == $item->username)
-                                    <a href="/admin/setting" class="btn btn-sm btn-warning">
-                                        <i class="fa fas fa-spin fa-cog"></i>
+                                    <a href="/admin/setting" class="btn btn-sm btn-outline-warning">
+                                        <i class="fa fas fa-spin fa-cog text-dark"></i>
                                     </a>
                                     @else
                                     @if ($item->level == 0)
 
                                     @else
-                                    <a class="btn btn-sm btn-primary"
-                                        href="/admin/administrator/view/{{$item->username}}">
-                                        <i class="fa fas fa-eye text-light"></i>
+                                    <a class="btn btn-sm btn-outline-primary"
+                                        href="/admin/administrator/view/{{$item->username}}" title="Lihat Data">
+                                        <i class="fa fas fa-eye text-dark"></i>
                                     </a>
                                     @if ($item->level == Auth::user()->level)
 
                                     @else
-                                    <a class="btn btn-sm btn-danger">
-                                        <i class="fa fas fa-trash text-light"></i>
+                                    <a class="btn btn-sm btn-outline-danger" title="Hapus Data Data" onclick="return confirm('Hapus Data Admin?')" href="/admin/administrator/hapusadmin/{{$item->id}}">
+                                        <i class="fa fas fa-trash text-dark"></i>
                                     </a>
                                     @endif
                                     @endif

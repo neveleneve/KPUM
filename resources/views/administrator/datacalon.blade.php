@@ -19,7 +19,8 @@
         <div class="container-fluid">
             <div class="row mb-3">
                 <div class="col-12">
-                    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modaltambahcalon">Tambah
+                    <button class="btn btn-outline-danger btn-flat btn-block" data-toggle="modal"
+                        data-target="#modaltambahcalon">Tambah
                         Calon</button>
                 </div>
             </div>

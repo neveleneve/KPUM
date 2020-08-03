@@ -7,6 +7,7 @@ use App\Pemilih;
 use App\Suara;
 use App\Visimisi;
 use App\Admin;
+use App\Waktu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,13 +17,18 @@ class AdminController extends Controller
     public function generateVoterToken()
     {
         $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
-        $request = new Request([
-            'token_id' => $randomString,
-            'status' => 0,
-            'updated_at' => null
-        ]);
-        Pemilih::create($request->all());
-        return redirect('/admin/datapemilih');
+        $datatoken = Pemilih::where('token_id', $randomString)->count();
+        if ($datatoken == 0) {
+            $request = new Request([
+                'token_id' => $randomString,
+                'status' => 0,
+                'updated_at' => null
+            ]);
+            Pemilih::create($request->all());
+            return redirect('/admin/datapemilih')->with('pemberitahuan', 'Token Pemilih Berhasil Dibuat!')->with('warna', 'success');
+        } else {
+            return redirect('/admin/datapemilih')->with('pemberitahuan', 'Token Pemilih Gagal Dibuat! Silahkan Ulangi!')->with('warna', 'danger');
+        }
     }
 
     public function dashboard()
@@ -156,5 +162,16 @@ class AdminController extends Controller
         } else {
             return redirect('/admin/setting/ubahdata')->with('info', 'Password Konfirmasi Salah, Silahkan Ulangi!')->with('warna', 'danger');
         }
+    }
+
+    public function adminsettingview()
+    {
+        $databuka = Waktu::where('nama', 'Buka')->get();
+        $datatutup = Waktu::where('nama', 'Tutup')->get();
+        
+        return view('administrator.setting', [
+            'databuka' => $databuka,
+            'datatutup' => $datatutup
+        ]);
     }
 }

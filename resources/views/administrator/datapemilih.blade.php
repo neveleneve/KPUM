@@ -17,18 +17,28 @@
     </div>
     <section class="content">
         <div class="container-fluid">
+            @if (session('pemberitahuan'))
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert bg-{{session('warna')}} alert-dismissable text-center" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{session('pemberitahuan')}}
+                    </div>
+                </div>
+            </div>
+            @endif
             <div class="row mb-3">
                 <div class="col-12">
                     <form action="/tambahtoken" method="post">
                         {{ csrf_field() }}
-                        <input type="submit" value="Tambah Token Pemilih" class="btn btn-primary btn-block">
+                        <input type="submit" value="Tambah Token Pemilih" class="btn btn-outline-danger btn-flat btn-block">
                     </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <table class="table table-bordered table-hover">
-                        <thead class="bg-dark">
+                        <thead class="bg-danger">
                             <tr>
                                 <th>Token ID</th>
                                 <th>Status</th>

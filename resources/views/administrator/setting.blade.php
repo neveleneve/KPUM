@@ -44,6 +44,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Waktu Pembukaan Pemilihan</label>
+                                <h6>{{ date('d M Y H:i:s', $databuka[0]['inttanggal']) }}</h6>
+                            </div>
+                            <div class="form-group">
+                                <label>Waktu Penutupan Pemilihan</label>
+                                <h6>{{ date('d M Y H:i:s', $datatutup[0]['inttanggal']) }}</h6>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                @if (strtotime('now') < $datatutup[0]['inttanggal'] && strtotime('now') > $databuka[0]['inttanggal'])
+                                    <h6>Buka</h6>
+                                @else
+                                    <h6>Tutup</h6>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="card-footer">                            
+                            <a href="/admin/setting/ubahtanggal" class="btn btn-sm btn-primary">Atur Tanggal Pemilihan</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
