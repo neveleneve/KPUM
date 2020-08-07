@@ -36,13 +36,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         return view('administrator.ubahpassword');
     });
     Route::post('/ubahpassword', 'AdminController@ubahpass');
-
-
     Route::get('/admin/setting/ubahdata', function () {
         return view('administrator.ubahdata');
     });
     Route::post('/ubahdata', 'AdminController@ubahdata');
 
+    Route::post('/admin/setting/settime', 'AdminController@settime');
 });
 
 Route::group(['middleware' => 'auth:voter'], function () {

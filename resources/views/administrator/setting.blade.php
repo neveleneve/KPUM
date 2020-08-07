@@ -39,7 +39,8 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="/admin/setting/ubahpassword" class="btn btn-sm btn-danger float-right">Ubah Password</a>
+                            <a href="/admin/setting/ubahpassword" class="btn btn-sm btn-danger float-right">Ubah
+                                Password</a>
                             <a href="/admin/setting/ubahdata" class="btn btn-sm btn-primary">Ubah Data Personal</a>
                         </div>
                     </div>
@@ -57,20 +58,56 @@
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
-                                @if (strtotime('now') < $datatutup[0]['inttanggal'] && strtotime('now') > $databuka[0]['inttanggal'])
+                                @if (strtotime('now') < $datatutup[0]['inttanggal'] && strtotime('now')>
+                                    $databuka[0]['inttanggal'])
                                     <h6>Buka</h6>
-                                @else
+                                    @else
                                     <h6>Tutup</h6>
-                                @endif
+                                    @endif
                             </div>
                         </div>
-                        <div class="card-footer">                            
-                            <a href="/admin/setting/ubahtanggal" class="btn btn-sm btn-primary">Atur Tanggal Pemilihan</a>
+                        <div class="card-footer">
+                            <a class="btn btn-sm btn-primary text-light" data-toggle="modal"
+                                data-target="#modalwaktupemilihan">Atur Tanggal Pemilihan</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+</div>
+<div class="modal fade" id="modalwaktupemilihan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Atur Waktu Pemilihan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/setting/settime" method="post">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="waktubuka">Waktu Buka Pemilihan</label>
+                        {{-- <input type="date" name="waktubuka" id="waktubuka" class="form-control" value="{{date('Y-m-d')}}">
+                        --}}
+                        <input type="datetime-local" name="waktubuka" id="waktubuka" class="form-control"
+                            value="{{ date('Y-m-d', $databuka[0]['inttanggal']) .'T'. date('H:i', $databuka[0]['inttanggal'])}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="waktututup">Waktu Tutup Pemilihan</label>
+                        {{-- <input type="date" name="waktubuka" id="waktubuka" class="form-control" value="{{date('Y-m-d')}}">
+                        --}}
+                        <input type="datetime-local" name="waktututup" id="waktututup" class="form-control"
+                            value="{{date('Y-m-d', $datatutup[0]['inttanggal']) .'T'. date('H:i', $datatutup[0]['inttanggal'])}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Atur" class="btn btn-primary btn-sm btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

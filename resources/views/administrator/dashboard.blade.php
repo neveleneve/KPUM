@@ -56,26 +56,27 @@
             </div>
             <div class="row mb-4">
                 <div class="col-md-12">
-                    <h1 class="m-0 text-dark text-center">Data Pasangan Calon</h1>
+                    <h2 class="m-0 text-dark">Data Pasangan Calon</h2>
                 </div>
             </div>
+            <?php $warnacok = ['', 'dark', 'info', 'warning', 'primary', 'danger'] ?>
             @foreach ($datacalon as $item)
-            <div class="row">                
+            <div class="row">
                 <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                     <div class="info-box">
-                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-alt"></i></span>
+                        <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i class="fas fa-user-alt"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Pasangan Nomor Urut {{$item->no_urut}}</span>
-                            <span class="info-box-number">{{$item->ketua}} - {{$item->wakil}}</span>                            
+                            <span class="info-box-number">{{$item->ketua}} - {{$item->wakil}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                     <div class="info-box">
-                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-alt"></i></span>
+                        <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i class="fas fa-user-alt"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Jumlah Suara : {{$item->no_urut}}</span>
-                            <span class="info-box-number">Persentase : {{$item->ketua}} - {{$item->wakil}}</span>                            
+                            <span class="info-box-text">Jumlah Suara : {{$datasuarapersonal[$item->no_urut]}}</span>
+                            <span class="info-box-number">Persentase : {{ round(($datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }} %</span>
                         </div>
                     </div>
                 </div>

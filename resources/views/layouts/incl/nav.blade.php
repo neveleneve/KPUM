@@ -7,14 +7,7 @@
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-        @guest
-        @if (session('status'))
-        <li class="nav-item nav-item-right">
-            <a class="nav-link bg-danger">
-                {{ session('status') }}
-            </a>
-        </li>
-        @endif
+        @guest        
         <li class="nav-item nav-item-right">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">Login</a>
         </li>

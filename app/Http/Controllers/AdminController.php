@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function generateVoterToken()
+    public function generateVoterToken(Request $req)
     {
         $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
         $datatoken = Pemilih::where('token_id', $randomString)->count();
@@ -37,11 +37,18 @@ class AdminController extends Controller
         $jumlahpemilih = Pemilih::count();
         $jumlahcalon = Visimisi::count();
         $datacalon = Visimisi::all()->sortBy('no_urut');
+        $datasuarapersonal = null;
+        for ($i = 1; $i <= $jumlahcalon; $i++) {
+            $suara = Suara::where('no_urut', $i)->get();
+            $datasuarapersonal[$i] = $suara[0]->jml_suara;
+        }
+
         return view('administrator.dashboard', [
             'suaramasuk' => $suaramasuk,
             'jumlahpemilih' => $jumlahpemilih,
             'jumlahcalon' => $jumlahcalon,
-            'datacalon' => $datacalon
+            'datacalon' => $datacalon,
+            'datasuarapersonal' => $datasuarapersonal,
         ]);
     }
 
@@ -168,10 +175,25 @@ class AdminController extends Controller
     {
         $databuka = Waktu::where('nama', 'Buka')->get();
         $datatutup = Waktu::where('nama', 'Tutup')->get();
-        
+
         return view('administrator.setting', [
             'databuka' => $databuka,
             'datatutup' => $datatutup
         ]);
+    }
+
+    public function settime(Request $req)
+    {
+        // echo strtotime(str_replace('T', ' ', $req->waktubuka))  . '<br>';
+        // echo strtotime(str_replace('T', ' ', $req->waktututup))  . '<br>';
+        $buka = strtotime(str_replace('T', ' ', $req->waktubuka));
+        $tutup = strtotime(str_replace('T', ' ', $req->waktututup));
+        Waktu::where('nama', 'Buka')->update([
+            'inttanggal' => $buka
+        ]);
+        Waktu::where('nama', 'Tutup')->update([
+            'inttanggal' => $tutup
+        ]);
+        return redirect('/admin/setting');
     }
 }
