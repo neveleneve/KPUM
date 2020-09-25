@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
+    
+    <link rel="stylesheet" href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminplugins/jqvmap/jqvmap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
