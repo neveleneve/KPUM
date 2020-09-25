@@ -48,7 +48,14 @@
                                 <div class="form-group">
                                     <input type="hidden" name="username" id="username"
                                         value="{{Auth::user()->username}}">
-                                    <input type="submit" class="btn btn-sm btn-primary btn-block">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="/admin/setting" class="btn btn-sm btn-danger btn-block">Kembali</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="submit" class="btn btn-sm btn-primary btn-block">
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </form>

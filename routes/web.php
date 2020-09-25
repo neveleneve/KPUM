@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('/tambahtoken', 'AdminController@generateVoterToken');
 
     Route::get('/admin/administrator', 'AdminController@adminshow');
+    Route::get('/admin/administrator/hapusadmin/{id}', 'AdminController@admindelete');
+    Route::get('/admin/administrator/view/{id}', 'AdminController@adminview');
+    Route::post('/admin/administrator/update', 'AdminController@adminupdate');
     Route::post('/tambahadmin', 'AdminController@adminadd');
     
     Route::get('/admin/setting/', 'AdminController@adminsettingview');

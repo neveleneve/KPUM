@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
 </head>
 
-<body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed @yield('classlogin')">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('layouts.incl.nav')
         @include('layouts.incl.side')
@@ -23,13 +23,12 @@
     <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
-    <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <script src="{{asset('admin/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
     <script src="{{asset('admin/plugins/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('admin/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
     <script src="{{asset('admin/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
     <script src="{{asset('admin/plugins/chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('admin/dist/js/pages/dashboard2.js')}}"></script>
+    <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 </body>
 
 </html>

@@ -52,15 +52,55 @@ class AdminController extends Controller
         ]);
     }
 
+    public function adminupdate(Request $req)
+    {
+        if (trim($req->password) == "") {
+            Admin::where('id', $req->id)->update([
+                'nama' => $req->nama,
+                'username' => $req->username,
+                'level' => $req->level,
+                'status' => $req->status
+            ]);
+        } else {
+            $password = Hash::make(trim($req->password), [
+                'rounds' => 10
+            ]);
+            Admin::where('id', $req->id)->update([
+                'nama' => $req->nama,
+                'password' => $password,
+                'username' => $req->username,
+                'level' => $req->level,
+                'status' => $req->status
+            ]);
+        }
+        return redirect('admin/administrator');
+    }
+
+    public function admindelete($id)
+    {
+        Admin::find($id)->delete();
+        return redirect('/admin/administrator');
+    }
+
+    public function adminview($id)
+    {
+        $data = Admin::where('username', $id)->get();
+        return view('administrator.administratorview', [
+            'dataadmin' => $data
+        ]);
+    }
+
     public function index()
     {
-        $data_pemilih = Pemilih::paginate(10);
-        return view('administrator.datapemilih', compact('data_pemilih'));
+        $data_pemilih = Pemilih::orderBy('status', 'desc')->paginate(10);
+        return view('administrator.datapemilih', [
+            'data_pemilih' => $data_pemilih
+        ]);
     }
 
     public function calon()
     {
-        $data_visi_misi = Visimisi::all()->sortBy('no_urut');
+        $data_visi_misi = Visimisi::orderBy('no_urut', 'asc')->get();
         return view('administrator.datacalon', [
             'data_visi_misi' => $data_visi_misi
         ]);

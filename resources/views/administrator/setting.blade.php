@@ -39,9 +39,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="/admin/setting/ubahpassword" class="btn btn-sm btn-danger float-right">Ubah
+                            <a href="/admin/setting/ubahpassword" class="btn btn-sm btn-outline-danger float-right">Ubah
                                 Password</a>
-                            <a href="/admin/setting/ubahdata" class="btn btn-sm btn-primary">Ubah Data Personal</a>
+                            <a href="/admin/setting/ubahdata" class="btn btn-sm btn-outline-primary">Ubah Data Personal</a>
                         </div>
                     </div>
                 </div>
@@ -67,8 +67,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-sm btn-primary text-light" data-toggle="modal"
-                                data-target="#modalwaktupemilihan">Atur Tanggal Pemilihan</a>
+                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modalwaktupemilihan">
+                                Atur Tanggal Pemilihan
+                            </button>
                         </div>
                     </div>
                 </div>

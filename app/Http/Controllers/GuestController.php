@@ -44,9 +44,9 @@ class GuestController extends Controller
         $dataadmin = Pemilih::where('token_id', $data->tokenid)->where('status', 0)->get();
 
         if ($now < $databuka[0]['inttanggal']) {
-            return redirect('/')->with('pemberitahuan', 'Waktu Pemilihan Belum Dibuka')->with('warna', 'danger');
+            return redirect('/')->with('pemberitahuan', 'Pemilihan Belum Dibuka')->with('warna', 'danger');
         } elseif ($now > $datatutup[0]['inttanggal']) {
-            return redirect('/')->with('pemberitahuan', 'Waktu Pemilihan Sudah Ditutup')->with('warna', 'danger');
+            return redirect('/')->with('pemberitahuan', 'Pemilihan Sudah Ditutup')->with('warna', 'danger');
         }else {
             if (count($dataadmin) > 0) {
                 Auth::guard('voter')->LoginUsingId($dataadmin[0]['id']);

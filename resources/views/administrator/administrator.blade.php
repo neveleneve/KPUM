@@ -37,6 +37,7 @@
                                 <th>Nama Admin</th>
                                 <th>Username</th>
                                 <th>Level</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -55,26 +56,33 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
+                                    @if ($item->status == 0)
+                                    Tidak Aktif
+                                    @else
+                                    Aktif
+                                    @endif
+                                </td>
+                                <td class="text-center">
                                     @if (Auth::user()->username == $item->username)
-                                    <a href="/admin/setting" class="btn btn-sm btn-outline-warning">
-                                        <i class="fa fas fa-spin fa-cog text-dark"></i>
-                                    </a>
+                                        <a href="/admin/setting" class="btn btn-sm btn-outline-warning">
+                                            <i class="fa fas fa-spin fa-cog text-dark"></i>
+                                        </a>
                                     @else
-                                    @if ($item->level == 0)
+                                        @if ($item->level == 0)
 
-                                    @else
-                                    <a class="btn btn-sm btn-outline-primary"
-                                        href="/admin/administrator/view/{{$item->username}}" title="Lihat Data">
-                                        <i class="fa fas fa-eye text-dark"></i>
-                                    </a>
-                                    @if ($item->level == Auth::user()->level)
+                                        @else
+                                        <a class="btn btn-sm btn-outline-primary"
+                                            href="/admin/administrator/view/{{$item->username}}" title="Lihat Data">
+                                            <i class="fa fas fa-eye text-dark"></i>
+                                        </a>
+                                            @if ($item->level == Auth::user()->level)
 
-                                    @else
-                                    <a class="btn btn-sm btn-outline-danger" title="Hapus Data Data" onclick="return confirm('Hapus Data Admin?')" href="/admin/administrator/hapusadmin/{{$item->id}}">
-                                        <i class="fa fas fa-trash text-dark"></i>
-                                    </a>
-                                    @endif
-                                    @endif
+                                            @else
+                                            <a class="btn btn-sm btn-outline-danger" title="Hapus Data Data" onclick="return confirm('Hapus Data Admin?')" href="/admin/administrator/hapusadmin/{{$item->id}}">
+                                                <i class="fa fas fa-trash text-dark"></i>
+                                            </a>
+                                            @endif
+                                        @endif
                                     @endif
                                 </td>
                             </tr>
