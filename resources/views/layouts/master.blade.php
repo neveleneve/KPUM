@@ -13,8 +13,8 @@
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/jqvmap/jqvmap.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/dist/css/adminlte.min.css')}}">
-    <link type="text/css" rel="stylesheet"
-        href="{{url('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}">
+    {{-- <link type="text/css" rel="stylesheet"
+        href="{{url('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}"> --}}
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/daterangepicker/daterangepicker.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/summernote/summernote-bs4.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
