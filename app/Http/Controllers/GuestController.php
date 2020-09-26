@@ -60,11 +60,11 @@ class GuestController extends Controller
     public function loginadmin(Request $data)
     {
         $dataadmin = Admin::where('username', $data->username)->get();
-        $pass = trim($data->password);
-        $hash = trim($dataadmin[0]->password);
         if (count($dataadmin) == 0) {
             
         }else {            
+            $pass = trim($data->password);
+            $hash = trim($dataadmin[0]->password);
             if (Hash::check($pass, $hash)) {
                 if ($dataadmin[0]->status == 1) {
                     Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
