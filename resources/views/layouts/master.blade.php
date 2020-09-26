@@ -13,7 +13,8 @@
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/jqvmap/jqvmap.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/dist/css/adminlte.min.css')}}">
-    <link type="text/css"rel="stylesheet" href="{{url('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}">
+    <link type="text/css" rel="stylesheet"
+        href="{{url('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/daterangepicker/daterangepicker.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('admin/plugins/summernote/summernote-bs4.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -193,15 +194,24 @@
         @yield('content')
     </div>
     <script src="{{url('admin/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{url('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
     <script src="{{url('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('admin/plugins/chart.js/Chart.min.js')}}"></script>
+    <script src="{{url('admin/plugins/sparklines/sparkline.js')}}"></script>
+    <script src="{{url('admin/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+    <script src="{{url('admin/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+    <script src="{{url('admin/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+    <script src="{{url('admin/plugins/moment/moment.min.js')}}"></script>
+    <script src="{{url('admin/plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{url('admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <script src="{{url('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
     <script src="{{url('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <script src="{{url('admin/dist/js/adminlte.js')}}"></script>
-    <script src="{{url('admin/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
-    <script src="{{url('admin/plugins/raphael/raphael.min.js')}}"></script>
-    <script src="{{url('admin/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
-    <script src="{{url('admin/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
-    <script src="{{url('admin/plugins/chart.js/Chart.min.js')}}"></script>
-    <script src="{{url('admin/dist/js/pages/dashboard2.js')}}"></script>
+    <script src="{{url('admin/dist/js/pages/dashboard.js')}}"></script>
+    <script src="{{url('admin/dist/js/demo.js')}}"></script>    
 </body>
 
 </html>
