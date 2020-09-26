@@ -25,31 +25,25 @@
                             <input type="hidden" id="id" name="id" value="{{$dataadmin[0]->id}}">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <div class="form-group">
-                                            <label for="nama">Nama Admin</label>
+                                            <label for="nama">Nama</label>
                                             <input class="form-control" type="text" name="nama" id="nama"
                                                 value="{{$dataadmin[0]->nama}}">
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <div class="form-group">
-                                            <label for="username">Username Admin</label>
+                                            <label for="username">Username</label>
                                             <input class="form-control" type="text" name="username" id="username"
                                                 value="{{$dataadmin[0]->username}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <label for="password">Ubah Password</label>
-                                            <input class="form-control" type="password" name="password" id="password">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="level">Level Admin</label>
+                                            <label for="level">Level</label>
                                             <select class="form-control" name="level" id="level">
                                                 <option value="0" {{$dataadmin[0]->level == 0 ? 'selected' : ''}}>Super
                                                     Admin</option>
@@ -59,6 +53,14 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="password">Ubah Password</label>
+                                            <input class="form-control" type="password" name="password" id="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
                                         <div class="form-group">
                                             <label for="level">Status</label>
                                             <select class="form-control" name="status" id="status">
@@ -70,7 +72,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                            
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-6">
