@@ -206,7 +206,7 @@
     <script src="{{url('admin/plugins/daterangepicker/daterangepicker.js')}}"></script>
     <script src="{{url('admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
     <script src="{{url('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
-    <script src="{{url('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+    {{-- <script src="{{url('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script> --}}
     <script src="{{url('admin/dist/js/adminlte.js')}}"></script>
     <script src="{{url('admin/dist/js/demo.js')}}"></script>    
 </body>
