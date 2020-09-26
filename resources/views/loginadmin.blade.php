@@ -21,15 +21,7 @@
                     <a><b>Admin</b>Login</a>
                 </div>
                 <form action="/adminloginproses" method="post">
-                    {{csrf_field()}}
-                    @if (session('gagal'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{session('gagal')}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
+                    {{csrf_field()}}                    
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus>
                         <div class="input-group-append">
@@ -47,6 +39,14 @@
                             </div>
                         </div>
                     </div>
+                    @if (session('gagal'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{session('gagal')}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Log In</button>
