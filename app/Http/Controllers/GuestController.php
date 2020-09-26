@@ -62,16 +62,21 @@ class GuestController extends Controller
         $dataadmin = Admin::where('username', $data->username)->get();
         $pass = trim($data->password);
         $hash = trim($dataadmin[0]->password);
-        if (Hash::check($pass, $hash)) {
-            if ($dataadmin[0]->status == 1) {
-                Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
-                return redirect('admin/dashboard');
+        if (count($dataadmin) == 0) {
+            
+        }else {            
+            if (Hash::check($pass, $hash)) {
+                if ($dataadmin[0]->status == 1) {
+                    Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
+                    return redirect('admin/dashboard');
+                } else {
+                    return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
+                }
             } else {
-                return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
+                return redirect('/adminlogin')->with('gagal', 'Password Yang Anda Masukkan Salah. Silahkan Ulangi!');
             }
-        } else {
-            return redirect('/adminlogin')->with('gagal', 'Password Yang Anda Masukkan Salah. Silahkan Ulangi!');
         }
+
     }
 
     public function logout()
