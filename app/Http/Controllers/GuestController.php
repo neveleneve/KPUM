@@ -47,7 +47,7 @@ class GuestController extends Controller
             return redirect('/')->with('pemberitahuan', 'Pemilihan Belum Dibuka')->with('warna', 'danger');
         } elseif ($now > $datatutup[0]['inttanggal']) {
             return redirect('/')->with('pemberitahuan', 'Pemilihan Sudah Ditutup')->with('warna', 'danger');
-        }else {
+        } else {
             if (count($dataadmin) > 0) {
                 Auth::guard('voter')->LoginUsingId($dataadmin[0]['id']);
                 return redirect('voter/dashboard');
@@ -59,24 +59,27 @@ class GuestController extends Controller
 
     public function loginadmin(Request $data)
     {
-        $dataadmin = Admin::where('username', $data->username)->get();
-        if (count($dataadmin) == 0) {
-            
-        }else {            
-            $pass = trim($data->password);
-            $hash = trim($dataadmin[0]->password);
-            if (Hash::check($pass, $hash)) {
-                if ($dataadmin[0]->status == 1) {
-                    Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
-                    return redirect('admin/dashboard');
-                } else {
-                    return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
-                }
+        if ($data->username == "" || $data->password == "") {
+            return redirect('/adminlogin')->with('gagal', 'Data Login Tidak Lengkap');
+        } else {
+            $dataadmin = Admin::where('username', $data->username)->get();
+            if (count($dataadmin) == 0) {
+                return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
             } else {
-                return redirect('/adminlogin')->with('gagal', 'Password Yang Anda Masukkan Salah. Silahkan Ulangi!');
+                $pass = trim($data->password);
+                $hash = trim($dataadmin[0]->password);
+                if (Hash::check($pass, $hash)) {
+                    if ($dataadmin[0]->status == 1) {
+                        Auth::guard('admin')->LoginUsingId($dataadmin[0]['id']);
+                        return redirect('admin/dashboard');
+                    } else {
+                        return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
+                    }
+                } else {
+                    return redirect('/adminlogin')->with('gagal', 'Password Yang Anda Masukkan Salah. Silahkan Ulangi!');
+                }
             }
         }
-
     }
 
     public function logout()
