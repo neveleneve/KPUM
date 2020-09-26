@@ -4,18 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin Login</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{asset('admin/dist/img/kpum.png')}}" type="image/x-icon">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
-    <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
     <link rel="stylesheet" href="{{asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-    <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
-    <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
@@ -29,7 +23,7 @@
                 <form action="/adminloginproses" method="post">
                     {{csrf_field()}}
                     @if (session('gagal'))
-                    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{session('gagal')}}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -57,25 +51,15 @@
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Log In</button>
                             <a href="/" class="btn btn-danger btn-block">Dashboard</a>
-                        </div>
-                        <!-- /.col -->
+                        </div>                  
                     </div>
                 </form>
-            </div>
-            <!-- /.login-card-body -->
+            </div>          
         </div>
     </div>
-    <!-- /.login-box -->
-
-    <!-- jQuery -->
     <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
-    <!-- Bootstrap 4 -->
     <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- AdminLTE App -->
     <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
-
-
-
 </body>
 
 </html>
