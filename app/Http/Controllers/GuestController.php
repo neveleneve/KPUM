@@ -76,7 +76,7 @@ class GuestController extends Controller
                         return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
                     }
                 } else {
-                    return redirect('/adminlogin')->with('gagal', 'Password Yang Anda Masukkan Salah. Silahkan Ulangi!');
+                    return redirect('/adminlogin')->with('gagal', 'Password Anda Salah. Silahkan Ulangi!');
                 }
             }
         }
