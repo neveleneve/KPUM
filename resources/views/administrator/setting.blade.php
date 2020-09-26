@@ -18,7 +18,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row mb-3">
-                <div class="col-6">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
