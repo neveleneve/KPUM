@@ -29,7 +29,7 @@
 
             @endif
             <div class="row mb-3">
-                <div class="col-12">
+                <div class="col-12 table-responsive">
                     <table class="table table-hover table-bordered">
                         <thead class="bg-danger text-center">
                             <tr>
@@ -64,22 +64,22 @@
                                 </td>
                                 <td class="text-center">
                                     @if (Auth::user()->username == $item->username)
-                                        <a href="/admin/setting" class="btn btn-sm btn-outline-warning">
-                                            <i class="fa fas fa-spin fa-cog text-dark"></i>
+                                        <a href="/admin/setting" class="btn btn-outline-warning">
+                                            Pengaturan
                                         </a>
                                     @else
                                         @if ($item->level == 0)
 
                                         @else
-                                        <a class="btn btn-sm btn-outline-primary"
+                                        <a class="btn btn-outline-primary"
                                             href="/admin/administrator/view/{{$item->username}}" title="Lihat Data">
-                                            <i class="fa fas fa-eye text-dark"></i>
+                                            Lihat Data
                                         </a>
                                             @if ($item->level == Auth::user()->level)
 
                                             @else
-                                            <a class="btn btn-sm btn-outline-danger" title="Hapus Data Data" onclick="return confirm('Hapus Data Admin?')" href="/admin/administrator/hapusadmin/{{$item->id}}">
-                                                <i class="fa fas fa-trash text-dark"></i>
+                                            <a class="btn btn-outline-danger" title="Hapus Data Data" onclick="return confirm('Hapus Data Admin?')" href="/admin/administrator/hapusadmin/{{$item->id}}">
+                                                Hapus Data
                                             </a>
                                             @endif
                                         @endif

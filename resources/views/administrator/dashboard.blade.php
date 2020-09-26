@@ -62,7 +62,7 @@
             <?php $warnacok = ['', 'dark', 'info', 'warning', 'primary', 'danger'] ?>
             @foreach ($datacalon as $item)
             <div class="row">
-                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="info-box">
                         <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i class="fas fa-user-alt"></i></span>
                         <div class="info-box-content">
@@ -71,11 +71,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="info-box">
                         <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i class="fas fa-user-alt"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Jumlah Suara : {{$datasuarapersonal[$item->no_urut]}}</span>
+                            <span class="info-box-text">Suara Nomor Urut  {{$item->no_urut}} : {{$datasuarapersonal[$item->no_urut]}} Suara</span>
                             <span class="info-box-number">Persentase : {{ round(($datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }} %</span>
                         </div>
                     </div>
