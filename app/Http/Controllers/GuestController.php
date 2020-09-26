@@ -64,7 +64,7 @@ class GuestController extends Controller
         } else {
             $dataadmin = Admin::where('username', $data->username)->get();
             if (count($dataadmin) == 0) {
-                return redirect('/adminlogin')->with('gagal', 'Status Admin Anda Tidak Aktif. Silahkan Hubungi Super Admin!');
+                return redirect('/adminlogin')->with('gagal', 'Username / Password Anda Salah. Silahkan Ulangi!');
             } else {
                 $pass = trim($data->password);
                 $hash = trim($dataadmin[0]->password);
