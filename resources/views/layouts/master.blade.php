@@ -6,16 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('title')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{asset('admin/dist/img/kpum.png')}}" type="image/x-icon">
-    <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/jqvmap/jqvmap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="shortcut icon" href="{{asset('admin/dist/img/kpum.png')}}" type="image/x-icon" type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}" type="text/css">
+    <link rel="stylesheet"
+        href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}"
+        type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/jqvmap/jqvmap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/overlayScrollbars.min.css')}}"
+        type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.css')}}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"
+        type="text/css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -166,6 +170,25 @@
                             </a>
                         </li>
                         @endauth
+                        <li class="nav-header">LABELS</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p class="text">Important</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-circle text-warning"></i>
+                                <p>Warning</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-circle text-info"></i>
+                                <p>Informational</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -181,7 +204,7 @@
     <script src="{{asset('admin/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
     <script src="{{asset('admin/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
     <script src="{{asset('admin/plugins/chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
+    <script src="{{asset('admin/dist/js/pages/dashboard2.js')}}"></script>
 </body>
 
 </html>
