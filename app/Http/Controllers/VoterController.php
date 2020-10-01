@@ -18,18 +18,14 @@ class VoterController extends Controller
 
     public function pilih(Request $req)
     {
-        // dd($req->id);
         $data = Suara::find($req->id);
         $data->jml_suara += 1;
         $data->save();
-
         $pemilih = Pemilih::find($req->idpemilih);
         $pemilih->status = 1;
         $pemilih->save();
-
         Auth::guard('voter')->logout();
-
-        return redirect('/');
+        return redirect('/')->with('pemberitahuan', 'Terima Kasih! Anda Berhasil Memilih.')->with('warna', 'success');
     }
 
     public function datacalon()
