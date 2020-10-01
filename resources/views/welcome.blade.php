@@ -124,7 +124,7 @@
             <div class="modal-body">
                 <form action="/voterloginproses" method="post">
                     {{ csrf_field() }}
-                    <input class="form-control mb-3" type="text" name="tokenid" id="tokenid" placeholder="ID Token">
+                    <input class="form-control mb-3" type="text" name="tokenid" id="tokenid" placeholder="ID Token" required>
                     <button type="submit" class="btn btn-block btn-primary">Masuk</button>
                     <a class="btn btn-block btn-danger" href="/adminlogin">Admin Login</a>
                 </form>
