@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row">
                 @foreach ($datacalon as $data)
-                <div class="col-{{12/$jumlahcalon}} col-lg-12 col-sm-12">
+                <div class="col-lg-{{12/$jumlahcalon}} col-12 col-sm-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
