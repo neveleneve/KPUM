@@ -41,7 +41,7 @@ class GuestController extends Controller
         $databuka = Waktu::where('nama', 'Buka')->get();
         $datatutup = Waktu::where('nama', 'Tutup')->get();
         $now = strtotime(date('d-m-Y H:i:s'));;
-        $dataadmin = Pemilih::where('token_id', $data->tokenid)->where('status', 0)->get();
+        $dataadmin = Pemilih::where('token_id', $data->tokenid)->get();
 
         if ($now < $databuka[0]['inttanggal']) {
             return redirect('/')->with('pemberitahuan', 'Pemilihan Belum Dibuka')->with('warna', 'danger');
@@ -49,10 +49,14 @@ class GuestController extends Controller
             return redirect('/')->with('pemberitahuan', 'Pemilihan Sudah Ditutup')->with('warna', 'danger');
         } else {
             if (count($dataadmin) > 0) {
-                Auth::guard('voter')->LoginUsingId($dataadmin[0]['id']);
-                return redirect('voter/dashboard');
+                if ($dataadmin[0]->status == 0) {
+                    Auth::guard('voter')->LoginUsingId($dataadmin[0]['id']);
+                    return redirect('voter/dashboard');
+                }else {
+                    return redirect('/')->with('pemberitahuan', 'Data Token Telah Digunakan')->with('warna', 'danger');
+                }
             } else {
-                return redirect('/')->with('pemberitahuan', 'Token Telah Dipakai')->with('warna', 'danger');
+                return redirect('/')->with('pemberitahuan', 'Data Token Tidak Ditemukan')->with('warna', 'danger');
             }
         }
     }
