@@ -7,13 +7,15 @@ use App\Pemilih;
 use App\Suara;
 use App\Visimisi;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 
 class VoterController extends Controller
 {
     public function index()
     {
-        //code
+        
+        return view('voter.dashboard', [
+
+        ]);
     }
 
     public function pilih(Request $req)

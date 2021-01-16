@@ -1,117 +1,83 @@
-@extends('layouts.master')
+@extends('layouts.guestmaster')
 @section('title')
-<title>Welcome To KPUM STT Indonesia</title>
+<title>Komisi Pemilihan Umum Mahasiswa STT Indonesia Tanjungpinang</title>
 @endsection
 
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-md-6">
-                    <h1 class="m-0 text-dark">Dashboard</h1>
+        <div class="container">
+            <section id="beranda" class="row">
+                <div class="col-12">
+                    <h4 class="text-center font-weight-bold d-none d-lg-inline">KOMISI PEMILIHAN UMUM MAHASISWA</h4>
+                    <h4 class="text-center mb-3 font-weight-light d-none d-lg-inline">SEKOLAH TINGGI TEKNOLOGI INDONESIA TANJUNGPINANG</h4>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/chicago.jpg"
+                                    alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/la.jpg"
+                                    alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/ny.jpg"
+                                    alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </section>
+            <div class="dropdown-divider"></div>
+            <section id="cara" class="pt-4 row justify-content-center">
+                <div class="col-6">
+                    <h4 class="text-center mb-3">&nbsp;</h4>
+                    <h1 class="text-center brand-text font-weight-bold mb-3">Cara Memilih</h1>
+                </div>
+                <div class="col-12">
+                    <div class="dropdown-divider"></div>
+                    <img class="img-fluid" src="https://www.w3schools.com/bootstrap/ny.jpg">
+                </div>
+            </section>
+            <div class="dropdown-divider"></div>
+            <section id="tentang" class="row pt-4 mb-2 justify-content-center">
+                <div class="col-12">
+                    <h4 class="text-center mb-3">&nbsp;</h4>
+                    <h1 class="text-center brand-text font-weight-bold mb-3">Tentang</h1>
+                    <div class="col-12">
+                        <div class="dropdown-divider mb-3"></div>
+                        <div class="card card-default">
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <img class="mx-auto img-thumbnail" src="{{ asset('/admin/dist/img/kpum.png') }}" alt="">
+                                </div>
+                                <p>
+                                    <strong>
+                                        Komisi Pemilihan Umum Mahasiswa Sekolah Tinggi Teknologi Indonesia Tanjungpinang
+                                    </strong>
+                                    merupakan badan yang dibentuk oleh Majelis Permusywaratan Mahasiswa Sekolah Tinggi
+                                    Teknologi Indonesia Tanjungpinang dalam rangka melakukan pemilihan Presiden dan
+                                    Wakil Presiden Mahasiswa Sekolah Tinggi Teknologi Indonesia Tanjungpinang
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
-    <section class="content">
-        <div class="container-fluid">
-            @if (session('pemberitahuan'))
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert bg-{{session('warna')}} alert-dismissable text-center" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        {{session('pemberitahuan')}}
-                    </div>
-                </div>
-            </div>
-            @endif
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Jumlah Pemilih</span>
-                            <span class="info-box-number">
-                                {{ $jumlah_pemilih }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-times"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Belum Memilih</span>
-                            <span class="info-box-number">
-                                {{ $jumlah_pemilih_belum }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <div class="info-box mb-3">
-                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Sudah Memilih</span>
-                            <span class="info-box-number">
-                                {{-- isi dengan yang udah milih --}}
-                                {{ $jumlah_pemilih_sudah }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <div class="info-box mb-3">
-                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Jumlah Paslon</span>
-                            <span class="info-box-number">
-                                {{ $jumlah_kandidat }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="info-box">
-                        <div class="info-box-content">
-                            <?php
-                                $warna = ['danger', 'warning', 'success', 'info'];
-                                $jmldata = count($jumlah_suara);
-                                if ($jumlah_pemilih_sudah == 0) {
-                                    $jumlah_pemilih_sudah = 1;
-                                    $jumlah_pemilih_sudah_show = 0;
-                                }else {
-                                    $jumlah_pemilih_sudah = $jumlah_pemilih_sudah;
-                                    $jumlah_pemilih_sudah_show = $jumlah_pemilih_sudah;
-                                }
-                            ?>
-                            <h3 class="text-center">
-                                <strong>Jumlah Perolehan Suara</strong>
-                            </h3>
-                            @for ($i = 0; $i < $jmldata; $i++) <div class="progress-group mt-4">
-                                Pasangan Nomor Urut {{$i + 1}}
-                                <span
-                                    class="float-right">{{$jumlah_suara[$i]}}/<b>{{$jumlah_pemilih_sudah_show}}</b></span>
-                                <div class="progress progress-sm" style="height: 20px">
-                                    <div class="progress-bar bg-{{$warna[$i]}}"
-                                        style="width: {{$jumlah_suara[$i] / $jumlah_pemilih_sudah * 100}}%">
-                                        {{number_format($jumlah_suara[$i] / $jumlah_pemilih_sudah, 4) * 100}} %
-                                    </div>
-                                </div>
-                        </div>
-                        @endfor
-                        <!-- /.progress-group -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
-{{-- Modal --}}
 <div class="modal fade" id="login-modal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -124,7 +90,8 @@
             <div class="modal-body">
                 <form action="/voterloginproses" method="post">
                     {{ csrf_field() }}
-                    <input class="form-control mb-3" type="text" name="tokenid" id="tokenid" placeholder="ID Token" required>
+                    <input class="form-control mb-3" type="text" name="tokenid" id="tokenid" placeholder="ID Token"
+                        required>
                     <button type="submit" class="btn btn-block btn-primary">Masuk</button>
                     <a class="btn btn-block btn-danger" href="/adminlogin">Admin Login</a>
                 </form>
@@ -132,4 +99,14 @@
         </div>
     </div>
 </div>
+@endsection
+@section('customjs')
+<script lang="Javascript" type="text/javascript">
+    $('.nav-link').click(function() {
+        var sectionTo = $(this).attr('href');
+        $('html, body').animate({
+            scrollTop: $(sectionTo).offset().top
+        }, 1000);
+    });
+</script>
 @endsection

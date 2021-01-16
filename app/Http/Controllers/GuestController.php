@@ -51,7 +51,7 @@ class GuestController extends Controller
             if (count($dataadmin) > 0) {
                 if ($dataadmin[0]->status == 0) {
                     Auth::guard('voter')->LoginUsingId($dataadmin[0]['id']);
-                    return redirect('voter/dashboard');
+                    return redirect('/voter/dashboard');
                 }else {
                     return redirect('/')->with('pemberitahuan', 'Data Token Telah Digunakan')->with('warna', 'danger');
                 }

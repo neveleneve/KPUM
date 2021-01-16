@@ -48,9 +48,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 Route::group(['middleware' => 'auth:voter'], function () {
-    Route::get('/voter/dashboard', function () {
-        return view('voter.dashboard');
-    });
+    Route::get('/voter/dashboard', 'VoterController@index');
 
     Route::get('/voter/voting', 'VoterController@datacalon');
     Route::post('/voter/vote', 'VoterController@pilih');
