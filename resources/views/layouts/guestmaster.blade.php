@@ -20,7 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @include('layouts/incl/guestnav')
         @yield('content')
         <footer class="main-footer text-center">
-            <strong>Copyright &copy; 2021 <a href="/">Komisi Pemilihan Umum Mahasiswa Tanjungpinang</a>.</strong>
+        <strong>Copyright &copy; 2021 <a href="{{url('/')}}">Komisi Pemilihan Umum Mahasiswa Tanjungpinang</a>.</strong>
         </footer>
     </div>
     <script src="{{ asset('/admin/plugins/jquery/jquery.min.js') }}"></script>

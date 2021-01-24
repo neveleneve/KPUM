@@ -9,20 +9,20 @@
         <div class="container">
             <section id="beranda" class="row">
                 <div class="col-12">
-                    <h4 class="text-center font-weight-bold d-none d-lg-inline">KOMISI PEMILIHAN UMUM MAHASISWA</h4>
-                    <h4 class="text-center mb-3 font-weight-light d-none d-lg-inline">SEKOLAH TINGGI TEKNOLOGI INDONESIA TANJUNGPINANG</h4>
+                    <h4 class="text-center font-weight-bold d-none d-lg-block">KOMISI PEMILIHAN UMUM MAHASISWA</h4>
+                    <h4 class="text-center mb-3 font-weight-light d-none d-lg-block">SEKOLAH TINGGI TEKNOLOGI INDONESIA TANJUNGPINANG</h4>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/chicago.jpg"
+                                <img class="d-block w-100" src="{{asset('/images/1.JPG')}}"
                                     alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/la.jpg"
+                                <img class="d-block w-100" src="{{asset('/images/2.JPG')}}"
                                     alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/ny.jpg"
+                                <img class="d-block w-100" src="{{asset('/images/3.JPG')}}"
                                     alt="Third slide">
                             </div>
                         </div>
@@ -92,8 +92,8 @@
                     {{ csrf_field() }}
                     <input class="form-control mb-3" type="text" name="tokenid" id="tokenid" placeholder="ID Token"
                         required>
-                    <button type="submit" class="btn btn-block btn-primary">Masuk</button>
-                    <a class="btn btn-block btn-danger" href="/adminlogin">Admin Login</a>
+                    <button type="submit" class="btn btn-block btn-dark">Masuk</button>
+                    <a class="btn btn-block btn-light border" href="/adminlogin">Admin Login</a>
                 </form>
             </div>
         </div>
