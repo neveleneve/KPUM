@@ -80,12 +80,12 @@
                         <p>Administrator</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/admin/report" class="nav-link {{ Request::is('admin/report*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Report</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="/admin/setting" class="nav-link {{ Request::is('admin/setting*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog fa-spin"></i>

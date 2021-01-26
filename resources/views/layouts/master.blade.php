@@ -41,6 +41,7 @@
     <script src="{{url('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
     <script src="{{url('admin/dist/js/adminlte.js')}}"></script>
     <script src="{{url('admin/dist/js/demo.js')}}"></script>    
+    @yield('customjs')
 </body>
 
 </html>

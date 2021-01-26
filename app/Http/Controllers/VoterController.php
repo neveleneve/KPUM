@@ -12,9 +12,13 @@ class VoterController extends Controller
 {
     public function index()
     {
-        
+        $datacalon = Visimisi::all()->sortBy('no_urut');
+        $jmlcalon = Visimisi::count();
+        $data_visi_misi = Visimisi::orderBy('no_urut', 'asc')->get();
         return view('voter.dashboard', [
-
+            'datacalon' => $datacalon,
+            'jumlahcalon' => $jmlcalon,
+            'data_visi_misi' => $data_visi_misi,
         ]);
     }
 
@@ -32,11 +36,6 @@ class VoterController extends Controller
 
     public function datacalon()
     {
-        $datacalon = Visimisi::all()->sortBy('no_urut');
-        $jmlcalon = Visimisi::count();
-        return view('voter.vote', [
-            'datacalon' => $datacalon,
-            'jumlahcalon' => $jmlcalon
-        ]);
+        return view('voter.vote', []);
     }
 }

@@ -29,10 +29,8 @@
             @endif
             <div class="row mb-3">
                 <div class="col-12">
-                    <form action="/tambahtoken" method="post">
-                        {{ csrf_field() }}
-                        <input type="submit" value="Tambah Token Pemilih" class="btn btn-outline-danger btn-flat btn-block">
-                    </form>
+                    <button data-toggle="modal" data-target="#modalpemilih"
+                        class="btn btn-outline-danger btn-flat btn-block">Tambah Data Pemilih</button>
                 </div>
             </div>
             <div class="row">
@@ -40,7 +38,9 @@
                     <table class="table table-bordered table-hover">
                         <thead class="bg-danger">
                             <tr>
-                                <th>Token ID</th>
+                                <th>Nama</th>
+                                <th>NIM</th>
+                                <th>Token</th>
                                 <th>Status</th>
                                 <th>Waktu Pemilihan</th>
                             </tr>
@@ -48,6 +48,8 @@
                         <tbody>
                             @foreach ($data_pemilih as $item)
                             <tr>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item->nim}}</td>
                                 <td>{{$item->token_id}}</td>
                                 <td>
                                     @if ($item->status == 0)
@@ -79,4 +81,43 @@
         </div>
     </section>
 </div>
+<div class="modal fade" id="modalpemilih">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/tambahtoken" method="post">
+                    {{ csrf_field() }}
+                    <input class="form-control mb-3" type="text" name="nama" id="nama" placeholder="Nama Pemilih"
+                        required onkeypress="return isCharKey(event)">
+                    <input class="form-control mb-3" type="text" name="nim" id="nim" placeholder="Nomor Induk Mahasiswa"
+                        required onkeypress="return isNumberKey(event)">
+                    <button type="submit" class="btn btn-block btn-dark">Tambah Pemilih</button>
+                    <a class="btn btn-block btn-light border" data-dismiss="modal">Batal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('customjs')
+<script>
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+    function isCharKey(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return true;
+        return false;
+    }
+</script>
 @endsection

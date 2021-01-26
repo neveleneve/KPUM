@@ -1,15 +1,18 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'GuestController@dashboard')->name('login');
-    Route::get('/tentang', function () {
+    Route::get('/cek-voter', function () {
         return view('about');
     });
     Route::get('/adminlogin', function () {
         return view('loginadmin');
     });
+
+    Route::get('/cek-pemilih', 'GuestController@cekvoter');
     Route::post('/voterloginproses', 'GuestController@loginvoter');
     Route::post('/adminloginproses', 'GuestController@loginadmin');
 });
@@ -33,7 +36,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/admin/administrator/view/{id}', 'AdminController@adminview');
     Route::post('/admin/administrator/update', 'AdminController@adminupdate');
     Route::post('/tambahadmin', 'AdminController@adminadd');
-    
+
     Route::get('/admin/setting/', 'AdminController@adminsettingview');
     Route::get('/admin/setting/ubahpassword', function () {
         return view('administrator.ubahpassword');

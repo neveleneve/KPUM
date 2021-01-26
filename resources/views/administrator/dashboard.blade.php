@@ -67,7 +67,8 @@
                         <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i class="fas fa-user-alt"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Pasangan Nomor Urut {{$item->no_urut}}</span>
-                            <span class="info-box-number">{{$item->ketua}} - {{$item->wakil}}</span>
+                            <span class="info-box-number">{{$item->ketua}}</span>
+                            <span class="info-box-number">{{$item->wakil}}</span>
                         </div>
                     </div>
                 </div>
@@ -76,7 +77,7 @@
                         <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i class="fas fa-user-alt"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Suara Nomor Urut  {{$item->no_urut}} : {{$datasuarapersonal[$item->no_urut]}} Suara</span>
-                            <span class="info-box-number">Persentase : {{ round(($datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }} %</span>
+                            <span class="info-box-number">Persentase : {{$datasuarapersonal[$item->no_urut] == 0 ? 0 : round(( $datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }} %</span>
                         </div>
                     </div>
                 </div>

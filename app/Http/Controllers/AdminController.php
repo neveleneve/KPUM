@@ -11,23 +11,34 @@ use App\Waktu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function generateVoterToken(Request $req)
+    public function randomstringlah()
     {
         $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
+        return $randomString;
+    }
+
+    public function generateVoterToken(Request $req)
+    {
+        $nama = $req->nama;
+        $nim = $req->nim;
+        $randomString = $this->randomstringlah();
         $datatoken = Pemilih::where('token_id', $randomString)->count();
         if ($datatoken == 0) {
             $request = new Request([
+                'nama' => $nama,
+                'nim' => $nim,
                 'token_id' => $randomString,
                 'status' => 0,
                 'updated_at' => null
             ]);
             Pemilih::create($request->all());
-            return redirect('/admin/datapemilih')->with('pemberitahuan', 'Token Pemilih Berhasil Dibuat!')->with('warna', 'success');
+            return redirect('/admin/datapemilih')->with('pemberitahuan', 'Data Pemilih Berhasil Dibuat!')->with('warna', 'success');
         } else {
-            return redirect('/admin/datapemilih')->with('pemberitahuan', 'Token Pemilih Gagal Dibuat! Silahkan Ulangi!')->with('warna', 'danger');
+            return redirect('/admin/datapemilih')->with('pemberitahuan', 'Data Pemilih Gagal Dibuat! Silahkan Ulangi!')->with('warna', 'danger');
         }
     }
 
@@ -38,6 +49,7 @@ class AdminController extends Controller
         $jumlahcalon = Visimisi::count();
         $datacalon = Visimisi::all()->sortBy('no_urut');
         $datasuarapersonal = null;
+        $sumdata = Suara::sum('jml_suara');
         for ($i = 1; $i <= $jumlahcalon; $i++) {
             $suara = Suara::where('no_urut', $i)->get();
             $datasuarapersonal[$i] = $suara[0]->jml_suara;
@@ -49,6 +61,7 @@ class AdminController extends Controller
             'jumlahcalon' => $jumlahcalon,
             'datacalon' => $datacalon,
             'datasuarapersonal' => $datasuarapersonal,
+            'jumlahsuara' => $sumdata,
         ]);
     }
 
@@ -101,8 +114,10 @@ class AdminController extends Controller
     public function calon()
     {
         $data_visi_misi = Visimisi::orderBy('no_urut', 'asc')->get();
+        $sumdata = Suara::sum('jml_suara'); 
         return view('administrator.datacalon', [
-            'data_visi_misi' => $data_visi_misi
+            'data_visi_misi' => $data_visi_misi,
+            'jumlahsuara' => $sumdata,
         ]);
     }
 
@@ -131,8 +146,7 @@ class AdminController extends Controller
             'jurusanwakil' => $request->jurusanwakil,
             'angkatanwakil' => $request->angkatanwakil,
             'visi' => $request->visi,
-            'misi' => $request->misi,
-            'remember_token' => $request->_token
+            'misi' => $request->misi
         ]);
         $namafile = $request->gambar;
         $img = $request->file('gambar');
@@ -141,15 +155,14 @@ class AdminController extends Controller
         $img->move($destination, $input['imagename']);
         Suara::create([
             'no_urut' =>  $request->no_urut,
-            'jml_suara' => 0,
-            'remember_token' => $request->_token
+            'jml_suara' => 0
         ]);
         return redirect('/admin/datacalon');
     }
 
     public function adminshow()
     {
-        $data = Admin::paginate(10);
+        $data = Admin::orderBy('level')->paginate(10);
         return view('administrator.administrator', [
             'dataadmin' => $data
         ]);

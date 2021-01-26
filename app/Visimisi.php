@@ -19,7 +19,6 @@ class Visimisi extends Model
         'wakil',
         'nimwakil',
         'jurusanwakil',
-        'angkatanwakil',
-        'remember_token'
+        'angkatanwakil'
     ];
 }

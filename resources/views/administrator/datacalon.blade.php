@@ -68,14 +68,13 @@
                                                 data-target="#modalbio{{$data->no_urut}}">
                                                 Lihat Biodata
                                             </button>
-                                            @if ($data->jml_suara == 0 || $data->jml_suara == null)
-
-                                            @else
+                                            @if ($jumlahsuara == 0 || $jumlahsuara == null)
                                             <a href="{{ route('hapuscalon', [$data->id]) }}"
                                                 class="btn btn-danger btn-block"
                                                 onclick="return confirm('Yakin Akan Menghapus Data?');">
                                                 Hapus Data Calon
                                             </a>
+                                            @else
                                             @endif
 
                                         </div>
@@ -136,36 +135,36 @@
             <div class="modal-body text-center">
                 <form action="/tambahcalon" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <input class="form-control mb-3" type="text" name="no_urut" id="no_urut" placeholder="Nomor Urut">
-                    <input class="form-control mb-3" type="text" name="ketua" id="ketua" placeholder="Nama Ketua">
+                    <input class="form-control mb-3" type="text" name="no_urut" id="no_urut" placeholder="Nomor Urut" required>
+                    <input class="form-control mb-3" type="text" name="ketua" id="ketua" placeholder="Nama Ketua" required>
                     <input class="form-control mb-3" type="text" name="nimketua" id="nimketua"
-                        placeholder="Nomor Induk Mahasiswa">
-                    <select class="form-control mb-3" name="jurusanketua" id="jurusanketua">
+                        placeholder="Nomor Induk Mahasiswa" required>
+                    <select class="form-control mb-3" name="jurusanketua" id="jurusanketua" required>
                         <option disabled selected>Jurusan Ketua</option>
                         <option value="Teknik Informatika">Teknik Informatika (IF)</option>
                         <option value="Sistem Informasi">Sistem Informasi (SI)</option>
                         <option value="Komputer Akuntansi">Komputer Akuntansi (KA)</option>
                     </select>
                     <input class="form-control mb-3" type="text" name="angkatanketua" id="angkatanketua"
-                        placeholder="Angkatan Ketua">
+                        placeholder="Angkatan Ketua" required>
                     <p>==========================================================</p>
-                    <input class="form-control mb-3" type="text" name="wakil" id="wakil" placeholder="Nama Wakil Ketua">
+                    <input class="form-control mb-3" type="text" name="wakil" id="wakil" placeholder="Nama Wakil Ketua" required>
                     <input class="form-control mb-3" type="text" name="nimwakil" id="nimwakil"
-                        placeholder="Nomor Induk Mahasiswa">
-                    <select class="form-control mb-3" name="jurusanwakil" id="jurusanwakil">
+                        placeholder="Nomor Induk Mahasiswa" required>
+                    <select class="form-control mb-3" name="jurusanwakil" id="jurusanwakil" required>
                         <option disabled selected>Jurusan Wakil</option>
                         <option value="Teknik Informatika">Teknik Informatika (IF)</option>
                         <option value="Sistem Informasi">Sistem Informasi (SI)</option>
                         <option value="Komputer Akuntansi">Komputer Akuntansi (KA)</option>
                     </select>
                     <input class="form-control mb-3" type="text" name="angkatanwakil" id="angkatanwakil"
-                        placeholder="Angkatan Wakil Ketua">
+                        placeholder="Angkatan Wakil Ketua" required>
                     <p>==========================================================</p>
-                    <textarea class="form-control mb-3" name="visi" id="visi" rows="5" placeholder="Visi"></textarea>
-                    <textarea class="form-control mb-3" name="misi" id="misi" rows="10" placeholder="Misi"></textarea>
+                    <textarea class="form-control mb-3" name="visi" id="visi" rows="5" placeholder="Visi" required></textarea>
+                    <textarea class="form-control mb-3" name="misi" id="misi" rows="10" placeholder="Misi" required></textarea>
                     <p>==========================================================</p>
                     <input class="form-control mb-3" type="file" name="gambar" id="gambar"
-                        placeholder="Gambar Pasangan Calon">
+                        placeholder="Gambar Pasangan Calon" required>
                     <input type="submit" class="btn btn-primary btn-block" value="Tambah Data">
                 </form>
             </div>

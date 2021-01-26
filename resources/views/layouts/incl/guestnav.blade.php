@@ -13,19 +13,24 @@
             <ul class="navbar-nav">
                 @guest
                 <li class="nav-item">
-                    <a href="#beranda" class="nav-link">Beranda</a>
+                    <a {{Request::url() == url('/') ? 'href=#beranda' : 'href=/'}} class="nav-link">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#cara" class="nav-link">Cara Memilih</a>
+                    <a {{Request::url() == url('/') ? 'href=#cara' : 'href=/'}} class="nav-link">Cara Memilih</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#tentang" class="nav-link">Tentang</a>
+                    <a {{Request::url() == url('/') ? 'href=#tentang' : 'href=/'}} class="nav-link">Tentang</a>
                 </li>
                 <li class="nav-item">
                     <a href="/cek-voter" class="nav-link">Cek Status Pemilih</a>
                 </li>
                 @endguest
                 @auth('voter')
+                @if ($jumlahcalon == 0)
+                <li class="nav-item">
+                    <a href="{{url('/voter/dashboard')}}" class="nav-link">Beranda</a>
+                </li>
+                @else
                 <li class="nav-item">
                     <a href="#beranda" class="nav-link">Beranda</a>
                 </li>
@@ -35,6 +40,7 @@
                 <li class="nav-item">
                     <a href="#vote" class="nav-link">Vote</a>
                 </li>
+                @endif
                 @endauth
             </ul>
         </div>
