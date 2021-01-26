@@ -12,7 +12,7 @@ Route::group(['middleware' => 'guest'], function () {
         return view('loginadmin');
     });
 
-    Route::get('/cek-pemilih', 'GuestController@cekvoter');
+    Route::post('/cek-pemilih', 'GuestController@cekvoter');
     Route::post('/voterloginproses', 'GuestController@loginvoter');
     Route::post('/adminloginproses', 'GuestController@loginadmin');
 });

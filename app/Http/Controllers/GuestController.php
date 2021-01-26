@@ -81,18 +81,11 @@ class GuestController extends Controller
 
     public function cekvoter(Request $req)
     {
-        $dataa = '';
-        if ($req->ajax()) {
-            $id = $req->get('id');
-            $datapegawai = Pemilih::where('id', $id)->get();
-            $dataa = array(
-                'kode_pegawaix' => $datapegawai[0]['kode_pegawai'],
-                'nama_pegawaix' => $datapegawai[0]->nama_pegawai,
-                'alamat' => $datapegawai[0]->alamat,
-                'jabatan' => $datapegawai[0]->jabatan,
-                'gaji' => $datapegawai[0]->gaji_bersih
-            );
-            echo json_encode($dataa);
+        $ceknim = Pemilih::where('nim', $req->nim)->get();
+        if (count($ceknim) == 0) {
+            return redirect('/cek-voter')->with('nim', $req->nim)->with('tiada', 'Data Pemilih Tidak Terdaftar');
+        }else {
+            return redirect('/cek-voter')->with('nim', $req->nim)->with('ada', 'Data Pemilih')->with('data', $ceknim);            
         }
     }
 

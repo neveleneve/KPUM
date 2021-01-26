@@ -26,56 +26,70 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="text-center card-body">
-                            <form id="ceknimmhs">
+                            <form method="POST" action="{{url('/cek-pemilih')}}">
                                 {{ csrf_field() }}
                                 <label for="ninm">Nomor Induk Mahasiswa</label>
+                                @if (session('nim'))
                                 <input type="text" name="nim" id="nim" placeholder="Masukkan Nomor Induk Mahasiswa"
-                                    class="form-control" onkeypress="return isNumberKey(event)">
+                                    value="{{session('nim')}}" class="form-control" required
+                                    onkeypress="return isNumberKey(event)">
+                                @else
+                                <input type="text" name="nim" id="nim" placeholder="Masukkan Nomor Induk Mahasiswa"
+                                    class="form-control" required onkeypress="return isNumberKey(event)">
+                                @endif
                                 <br>
-                                <button id="ceknim" class="btn btn-block btn-dark">Cek!</button>
+                                <button type="submit" class="btn btn-block btn-dark">Cek!</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="prosesdatapemilih" class="row justify-content-center text-center" style="display: none">
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-header bg-primary">
-                            <h5 class="font-weight-bold">Mencari Data Pemilih&nbsp;<i
-                                    class="fas fa-spinner fa-pulse"></i></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="nodatapemilih" class="row justify-content-center text-center" style="display: none">
+            @if (session('tiada'))
+            <div id="nodatapemilih" class="row justify-content-center text-center">
                 <div class="col-6">
                     <div class="card">
                         <div class="card-header bg-danger">
-                            <h5 class="font-weight-bold">Data Pemilih Tidak Ditemukan</h5>
+                            <h5 class="font-weight-bold">{{session('tiada')}}</h5>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="datapemilih" class="row justify-content-center text-center" style="display: none">
+            @endif
+            @if (session('ada'))
+            <div id="datapemilih" class="row justify-content-center text-center">
                 <div class="col-6">
                     <div class="card">
                         <div class="card-header bg-dark">
-                            <h5 class="font-weight-bold">Data Pemilih</h5>
+                            <h5 class="font-weight-bold">{{session('ada')}}</h5>
                         </div>
                         <div class="card-body">
                             <label for="nama">Nama Pemilih</label>
-                            <p id="nama">&nbsp;</p>
+                            <p id="nama">{{session('data')[0]->nama}}</p>
                             <label for="nim">Nomor Induk Mahasiswa</label>
-                            <p id="nim">&nbsp;</p>
+                            <p id="nim">{{session('data')[0]->nim}}</p>
                             <label for="jurusan">Jurusan</label>
-                            <p id="jurusan">&nbsp;</p>
+                            <p id="jurusan">
+                                @php
+                                if (substr(session('data')[0]->nim, 0, -5) == 12) {
+                                echo 'Teknik Informatika';
+                                }
+                                if (substr(session('data')[0]->nim, 0, -5) == 32) {
+                                echo 'Sistem Informasi';
+                                }
+                                if (substr(session('data')[0]->nim, 0, -5) == 42) {
+                                echo 'Komputer Akuntansi';
+                                }
+                                @endphp
+                            </p>
                             <label for="angkatan">Angkatan</label>
-                            <p id="angkatan">&nbsp;</p>
+                            <p id="angkatan">
+                                20{{substr(session('data')[0]->nim, 2, -3)}}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
@@ -110,19 +124,8 @@
             return false;
         return true;
     }
-    $("#cek-nim").on('submit', function (e) {
-        e.preventDefault();
-        $('#prosesdatapemilih').slideToggle(1000);
-        $.ajax({
-            url: '/cek-pemilih',
-            type: 'get',
-            data: {id: document.getElementById('nim').value},
-            dataType: 'json',
-            success: function (data) {
-                $('#prosesdatapemilih').slideToggle(1000);
-               
-            },
-        });
-    });
+    setTimeout(function(){
+        $('#datapemilih').show();// or fade, css display however you'd like.
+    }, 5000);
 </script>
 @endsection
