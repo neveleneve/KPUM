@@ -21,6 +21,12 @@ class AdminController extends Controller
         return $randomString;
     }
 
+    public function hapuspemilih(Request $req)
+    {
+        Pemilih::where('id', $req->id)->delete();
+        return redirect('/admin/datapemilih');
+    }
+
     public function generateVoterToken(Request $req)
     {
         $nama = $req->nama;
@@ -103,18 +109,27 @@ class AdminController extends Controller
         ]);
     }
 
-    public function index()
+    public function index(Request $req)
     {
-        $data_pemilih = Pemilih::orderBy('status', 'desc')->paginate(10);
-        return view('administrator.datapemilih', [
-            'data_pemilih' => $data_pemilih
-        ]);
+        if ($req->has('cari')) {
+            $data_pemilih = Pemilih::where('nim', 'LIKE', '%' . $req->cari . '%')->orWhere('nama', 'LIKE', '%' . $req->cari . '%')->orderBy('status', 'desc')->paginate(10);
+            return view('administrator.datapemilih', [
+                'data_pemilih' => $data_pemilih,
+                'nim' => $req->cari,
+            ]);
+        } else {
+            $data_pemilih = Pemilih::orderBy('status', 'desc')->paginate(10);
+            return view('administrator.datapemilih', [
+                'data_pemilih' => $data_pemilih,
+                'nim' => null,
+            ]);
+        }
     }
 
     public function calon()
     {
         $data_visi_misi = Visimisi::orderBy('no_urut', 'asc')->get();
-        $sumdata = Suara::sum('jml_suara'); 
+        $sumdata = Suara::sum('jml_suara');
         return view('administrator.datacalon', [
             'data_visi_misi' => $data_visi_misi,
             'jumlahsuara' => $sumdata,

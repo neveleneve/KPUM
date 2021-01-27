@@ -54,9 +54,9 @@
                     <h4 class="text-center mb-3">&nbsp;</h4>
                     <h1 class="text-center brand-text font-weight-bold mb-3">Cara Memilih</h1>
                 </div>
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <div class="dropdown-divider"></div>
-                    <img class="img-fluid" src="https://www.w3schools.com/bootstrap/ny.jpg">
+                    <img class="img-fluid" src="{{asset('/images/tata-cara.jpg')}}">
                 </div>
             </section>
             <div class="dropdown-divider"></div>

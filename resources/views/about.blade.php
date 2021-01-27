@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="text-center card-body">
                             <form method="POST" action="{{url('/cek-pemilih')}}">
@@ -46,7 +46,7 @@
             </div>
             @if (session('tiada'))
             <div id="nodatapemilih" class="row justify-content-center text-center">
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-header bg-danger">
                             <h5 class="font-weight-bold">{{session('tiada')}}</h5>
@@ -57,7 +57,7 @@
             @endif
             @if (session('ada'))
             <div id="datapemilih" class="row justify-content-center text-center">
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-header bg-dark">
                             <h5 class="font-weight-bold">{{session('ada')}}</h5>

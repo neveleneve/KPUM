@@ -6,6 +6,7 @@
             </a>
         </li>
     </ul>
+    @yield('search')
     <ul class="navbar-nav ml-auto">
         @guest        
         <li class="nav-item nav-item-right">
@@ -18,5 +19,4 @@
         </li>
         @endauth
     </ul>
-    @yield('seacrh')
 </nav>

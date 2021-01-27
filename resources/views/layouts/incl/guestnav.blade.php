@@ -63,6 +63,9 @@
         @endguest
         @auth
         <ul class="order-1 order-md-3 navbar-nav ml-auto">
+            <li>
+                <a class="nav-link">{{Auth::user()->nama}}</a>
+            </li>
             <li class="nav-item nav-item-right">
                 <a title="Keluar" class="nav-link" href="/logout"
                     onclick="javascript: return confirm('Keluar Sekarang?');">

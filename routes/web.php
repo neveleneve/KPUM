@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/hapuscalon/{id}', 'AdminController@hapuscalon')->name('hapuscalon');
 
     Route::get('/admin/datapemilih', 'AdminController@index');
+    Route::post('/admin/datapemilih', 'AdminController@index');
+    Route::post('/admin/datapemilih/hapus', 'AdminController@hapuspemilih');
     Route::post('/tambahtoken', 'AdminController@generateVoterToken');
 
     Route::get('/admin/administrator', 'AdminController@adminshow');
