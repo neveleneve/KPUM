@@ -34,6 +34,11 @@
                 <li class="nav-item">
                     <a href="#beranda" class="nav-link">Beranda</a>
                 </li>
+                @if (strtotime("now") > $tutup[0]->inttanggal - 3600)
+                <li class="nav-item">
+                    <a href="#hasil" class="nav-link">Hasil Perhitungan</a>
+                </li>
+                @endif
                 <li class="nav-item">
                     <a href="#visimisi" class="nav-link">Visi dan Misi</a>
                 </li>

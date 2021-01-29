@@ -62,9 +62,7 @@
                                             <h3 class="text-center mb-2">Visi</h3>
                                             <p class="text-center mb-4">{{$data->visi}}</p>
                                             <h3 class="text-center mb-2">Misi</h3>
-                                            {{-- <p class="text-center"> --}}
-                                               {{ str_replace(array("\n", "rn", "\r"), ' <br> ', $data->misi )}}
-                                            {{-- </p> --}}
+                                            <pre style="white-space:pre-wrap; word-wrap:break-word;">{{ $data->misi }}</pre>
                                             <button class="btn btn-primary btn-block view mb-2" data-toggle="modal"
                                                 data-target="#modalbio{{$data->no_urut}}">
                                                 Lihat Biodata

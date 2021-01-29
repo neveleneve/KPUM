@@ -15,6 +15,7 @@ class GuestController extends Controller
 {
     public function dashboard()
     {
+        
         $data = Admin::where('username', 'akimilakuo')->count();
         if ($data == 0) {
             Admin::create([
@@ -59,6 +60,11 @@ class GuestController extends Controller
                 'inttanggal' => 1611680400
             ]);
         }
+        $datacalon = Visimisi::all()->sortBy('no_urut');
+        $datasuarapersonal = null;
+        $suaramasuk = Suara::sum('jml_suara');
+
+        $waktututup = Waktu::where('nama', 'Tutup')->get();
 
         $jumlah_pemilih = Pemilih::count();
         $jumlah_pemilih_belum = Pemilih::where('status', 0)->count();
@@ -75,7 +81,11 @@ class GuestController extends Controller
             'jumlah_pemilih_sudah' => $jumlah_pemilih_sudah,
             'jumlah_kandidat' => $jumlah_kandidat,
             'jumlah_pemilih' => $jumlah_pemilih,
-            'jumlah_suara' => $jumlah_suara
+            'jumlah_suara' => $jumlah_suara,
+            'datacalon' => $datacalon,
+            'datasuarapersonal' => $datasuarapersonal,
+            'suaramasuk' => $suaramasuk,
+            'tutup' => $waktututup,
         ]);
     }
 

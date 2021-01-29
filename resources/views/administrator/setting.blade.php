@@ -41,7 +41,8 @@
                         <div class="card-footer">
                             <a href="/admin/setting/ubahpassword" class="btn btn-sm btn-outline-danger float-right">Ubah
                                 Password</a>
-                            <a href="/admin/setting/ubahdata" class="btn btn-sm btn-outline-primary">Ubah Data Personal</a>
+                            <a href="/admin/setting/ubahdata" class="btn btn-sm btn-outline-primary">Ubah Data
+                                Personal</a>
                         </div>
                     </div>
                 </div>
@@ -58,16 +59,18 @@
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
-                                @if (strtotime('now') < $datatutup[0]['inttanggal'] && strtotime('now')>
-                                    $databuka[0]['inttanggal'])
-                                    <h6>Buka</h6>
+                                @if (strtotime('now') > $datatutup[0]['inttanggal'])
+                                    <h6>Sudah Ditutup</h6>
+                                    @elseif(strtotime('now') < $databuka[0]['inttanggal'])
+                                    <h6>Belum Dibuka</h6>
                                     @else
-                                    <h6>Tutup</h6>
+                                    <h6>Dibuka</h6>
                                     @endif
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modalwaktupemilihan">
+                            <button class="btn btn-sm btn-outline-primary" data-toggle="modal"
+                                data-target="#modalwaktupemilihan">
                                 Atur Tanggal Pemilihan
                             </button>
                         </div>

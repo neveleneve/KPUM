@@ -48,6 +48,32 @@
                     </div>
                 </div>
             </section>
+            @if (strtotime("now") > $tutup[0]->inttanggal - 3600)
+            <div class="dropdown-divider"></div>
+            <?php $warnacok = ['', 'dark', 'info', 'warning', 'primary', 'danger'] ?>
+            <section id="hasil" class="row pt-4 mb-2 justify-content-center">
+                @foreach ($datacalon as $item)
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-{{$warnacok[$item->no_urut]}} elevation-1"><i
+                                class="fas fa-user-alt"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Pasangan Nomor Urut {{$item->no_urut}}</span>
+                            <span class="info-box-number">{{$item->ketua}}</span>
+                            <span class="info-box-number">{{$item->wakil}}</span>
+                        </div>
+                        <div class="info-box-footer">
+                            Persentase Suara :
+                            {{$datasuarapersonal[$item->no_urut] == 0 ? 0 : round(( $datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }}
+                            % ({{$datasuarapersonal[$item->no_urut]}} Suara)
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </section>
+            @else
+
+            @endif
             <div class="dropdown-divider"></div>
             <section id="cara" class="pt-4 row justify-content-center">
                 <div class="col-6">
@@ -60,7 +86,7 @@
                 </div>
             </section>
             <div class="dropdown-divider"></div>
-            <section id="tentang" class="row pt-4 mb-2 justify-content-center">
+            <section id="tentang" class="row pt-4 justify-content-center">
                 <div class="col-12">
                     <h4 class="text-center mb-3">&nbsp;</h4>
                     <h1 class="text-center brand-text font-weight-bold mb-3">Tentang</h1>

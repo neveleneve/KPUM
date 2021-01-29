@@ -76,7 +76,7 @@
                                     <form action="/admin/datapemilih/hapus" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="id" id="id" value="{{$item->id}}">
-                                        <button class="btn btn-danger btn-block" type="submit"
+                                        <button class="btn btn-danger btn-sm btn-block" type="submit"
                                             onclick="return confirm('Hapus Data Pemilih?')">
                                             <i class="fa fa-trash"></i>
                                         </button>

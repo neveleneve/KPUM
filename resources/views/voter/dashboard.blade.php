@@ -69,7 +69,7 @@
                             <h3 class="text-center mb-2">Visi</h3>
                             <p class="text-center mb-4">{{$data->visi}}</p>
                             <h3 class="text-center mb-2">Misi</h3>
-                            <pre class="text-center"><h5>{{$data->misi}}</h5></pre>
+                            <pre style="white-space:pre-wrap; word-wrap:break-word;">{{$data->misi}}</pre>
                         </div>
                     </div>
                 </div>
