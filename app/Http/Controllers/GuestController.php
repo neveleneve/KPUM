@@ -21,7 +21,7 @@ class GuestController extends Controller
             Admin::create([
                 'nama' => 'Master Administrator',
                 'username' => 'akimilakuo',
-                'password' => '$2y$10$r5ijYr0nSp/nw8oZleE7f.qz62K7RIQuq5zLQF.pTn/4t7c/QFham ',
+                'password' => Hash::make('akimilakuo'),
                 'level' => '0',
                 'status' => '1'
             ]);

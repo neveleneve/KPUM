@@ -32,7 +32,7 @@ class AdminController extends Controller
         $nama = $req->nama;
         $nim = $req->nim;
         $randomString = $this->randomstringlah();
-        $datatoken = Pemilih::where('token_id', $randomString)->count();
+        $datatoken = Pemilih::where('token_id', $randomString)->orWhere('nim', $nim)->count();
         if ($datatoken == 0) {
             $request = new Request([
                 'nama' => $nama,

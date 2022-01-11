@@ -18,8 +18,7 @@
         <div class="container-fluid">
             <div class="row mb-3">
                 <div class="col-12">
-                    <button class="btn btn-outline-danger btn-flat btn-block" data-toggle="modal"
-                        data-target="#modaltambahcalon">Tambah
+                    <button class="btn btn-outline-danger btn-flat btn-block" data-toggle="modal" data-target="#modaltambahcalon">Tambah
                         Calon</button>
                 </div>
             </div>
@@ -51,8 +50,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="text-center mb-3">
-                                                <img class="card-img" style="width: 70%"
-                                                    src="{{asset('admin/dist/img/'.$data->gambar)}}">
+                                                <img class="card-img" style="width: 70%" src="{{asset('admin/dist/img/'.$data->gambar)}}">
                                             </div>
                                             <div class="text-center">
                                                 <label>Ketua : </label>{{' '.$data->ketua}}
@@ -63,14 +61,11 @@
                                             <p class="text-center mb-4">{{$data->visi}}</p>
                                             <h3 class="text-center mb-2">Misi</h3>
                                             <pre style="white-space:pre-wrap; word-wrap:break-word;">{{ $data->misi }}</pre>
-                                            <button class="btn btn-primary btn-block view mb-2" data-toggle="modal"
-                                                data-target="#modalbio{{$data->no_urut}}">
+                                            <button class="btn btn-primary btn-block view mb-2" data-toggle="modal" data-target="#modalbio{{$data->no_urut}}">
                                                 Lihat Biodata
                                             </button>
                                             @if ($jumlahsuara == 0 || $jumlahsuara == null)
-                                            <a href="{{ route('hapuscalon', [$data->id]) }}"
-                                                class="btn btn-danger btn-block"
-                                                onclick="return confirm('Yakin Akan Menghapus Data?');">
+                                            <a href="{{ route('hapuscalon', [$data->id]) }}" class="btn btn-danger btn-block" onclick="return confirm('Yakin Akan Menghapus Data?');">
                                                 Hapus Data Calon
                                             </a>
                                             @else
@@ -84,8 +79,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Biodata</h4>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                             </div>
@@ -123,7 +117,7 @@
     </section>
 </div>
 <div class="modal fade" id="modaltambahcalon">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Tambah Data Calon</h4>
@@ -131,44 +125,63 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body text-center">
+            <div class="modal-body">
                 <form action="/tambahcalon" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <input class="form-control mb-3" type="text" name="no_urut" id="no_urut" placeholder="Nomor Urut"
-                        required>
-                    <input class="form-control mb-3" type="text" name="ketua" id="ketua" placeholder="Nama Ketua"
-                        required>
-                    <input class="form-control mb-3" type="text" name="nimketua" id="nimketua"
-                        placeholder="Nomor Induk Mahasiswa" required>
-                    <select class="form-control mb-3" name="jurusanketua" id="jurusanketua" required>
-                        <option disabled selected>Jurusan Ketua</option>
-                        <option value="Teknik Informatika">Teknik Informatika (IF)</option>
-                        <option value="Sistem Informasi">Sistem Informasi (SI)</option>
-                        <option value="Komputer Akuntansi">Komputer Akuntansi (KA)</option>
-                    </select>
-                    <input class="form-control mb-3" type="text" name="angkatanketua" id="angkatanketua"
-                        placeholder="Angkatan Ketua" required>
-                    <p>==========================================================</p>
-                    <input class="form-control mb-3" type="text" name="wakil" id="wakil" placeholder="Nama Wakil Ketua"
-                        required>
-                    <input class="form-control mb-3" type="text" name="nimwakil" id="nimwakil"
-                        placeholder="Nomor Induk Mahasiswa" required>
-                    <select class="form-control mb-3" name="jurusanwakil" id="jurusanwakil" required>
-                        <option disabled selected>Jurusan Wakil</option>
-                        <option value="Teknik Informatika">Teknik Informatika (IF)</option>
-                        <option value="Sistem Informasi">Sistem Informasi (SI)</option>
-                        <option value="Komputer Akuntansi">Komputer Akuntansi (KA)</option>
-                    </select>
-                    <input class="form-control mb-3" type="text" name="angkatanwakil" id="angkatanwakil"
-                        placeholder="Angkatan Wakil Ketua" required>
-                    <p>==========================================================</p>
-                    <textarea class="form-control mb-3" name="visi" id="visi" rows="5" placeholder="Visi"
-                        required></textarea>
-                    <textarea class="form-control mb-3" name="misi" id="misi" rows="10" placeholder="Misi"
-                        required></textarea>
-                    <p>==========================================================</p>
-                    <input class="form-control mb-3" type="file" name="gambar" id="gambar"
-                        placeholder="Gambar Pasangan Calon" required>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="no_urut">Nomor Urut Pasangan Calon</label>
+                            <input class="form-control mb-3" type="text" name="no_urut" id="no_urut" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="ketua">Nama Calon Ketua</label>
+                            <input class="form-control mb-3" type="text" name="ketua" id="ketua" required>
+                            <label for="nimketua">Nomor Induk Mahasiswa Calon Ketua</label>
+                            <input class="form-control mb-3" type="text" name="nimketua" id="nimketua" required>
+                            <label for="jurusanketua">Jurusan Calon Ketua</label>
+                            <select class="form-control mb-3" name="jurusanketua" id="jurusanketua" required>
+                                <option value="Teknik Informatika">Teknik Informatika (IF)</option>
+                                <option value="Sistem Informasi">Sistem Informasi (SI)</option>
+                                <option value="Komputer Akuntansi">Komputer Akuntansi (KA)</option>
+                            </select>
+                            <label for="angkatanketua">Angkatan Calon Ketua</label>
+                            <input class="form-control mb-3" type="text" name="angkatanketua" id="angkatanketua" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="wakil">Nama Calon Wakil Ketua</label>
+                            <input class="form-control mb-3" type="text" name="wakil" id="wakil" required>
+                            <label for="nimwakil">Nomor Induk Mahasiswa Calon Wakil Ketua</label>
+                            <input class="form-control mb-3" type="text" name="nimwakil" id="nimwakil" required>
+                            <label for="jurusanwakil">Jurusan Calon Wakil Ketua</label>
+                            <select class="form-control mb-3" name="jurusanwakil" id="jurusanwakil" required>
+                                <option value="Teknik Informatika">Teknik Informatika (IF)</option>
+                                <option value="Sistem Informasi">Sistem Informasi (SI)</option>
+                                <option value="Komputer Akuntansi">Komputer Akuntansi (KA)</option>
+                            </select>
+                            <label for="angkatanwakil">Angkatan Calon Wakil Ketua</label>
+                            <input class="form-control mb-3" type="text" name="angkatanwakil" id="angkatanwakil" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="visi">Visi Pasangan Calon</label>
+                            <textarea class="form-control mb-3" name="visi" id="visi" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="misi">Misi Pasangan Calon</label>
+                            <textarea class="form-control mb-3" name="misi" id="misi" rows="10" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="gambar">Gambar Pasangan Calon</label>
+                            <input class="form-control mb-3" type="file" name="gambar" id="gambar" required>
+                        </div>
+                    </div>
                     <input type="submit" class="btn btn-primary btn-block" value="Tambah Data">
                 </form>
             </div>
