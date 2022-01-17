@@ -18,6 +18,7 @@
                 </div>
             </div>
             @endif
+            @if ($setting['carousel'][0] == 1)
             <section id="beranda" class="row">
                 <div class="col-12">
                     <h4 class="text-center font-weight-bold d-none d-lg-block">KOMISI PEMILIHAN UMUM MAHASISWA</h4>
@@ -26,13 +27,13 @@
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="{{asset('/images/1.JPG')}}" alt="First slide">
+                                <img class="d-block w-100" src="{{asset('/images/carousel/1.JPG')}}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="{{asset('/images/2.JPG')}}" alt="Second slide">
+                                <img class="d-block w-100" src="{{asset('/images/carousel/2.JPG')}}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="{{asset('/images/3.JPG')}}" alt="Third slide">
+                                <img class="d-block w-100" src="{{asset('/images/carousel/3.JPG')}}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -48,8 +49,9 @@
                     </div>
                 </div>
             </section>
-            @if (strtotime("now") > $tutup[0]->inttanggal - 3600)
             <div class="dropdown-divider"></div>
+            @endif
+            @if ($setting['hasil suara'][0] == 1)
             <?php $warnacok = ['', 'dark', 'info', 'warning', 'primary', 'danger'] ?>
             <section id="hasil" class="row pt-4 mb-2 justify-content-center">
                 @foreach ($datacalon as $item)
@@ -64,31 +66,30 @@
                         </div>
                         <div class="info-box-footer">
                             Persentase Suara :
-                            {{$datasuarapersonal[$item->no_urut] == 0 ? 0 : round(( $datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }}
+                            {{$datasuarapersonal[$item->no_urut] == 0 ? 0 : round((
+                            $datasuarapersonal[$item->no_urut]/$suaramasuk), 4) * 100 }}
                             % ({{$datasuarapersonal[$item->no_urut]}} Suara)
                         </div>
                     </div>
                 </div>
                 @endforeach
             </section>
-            @else
-
-            @endif
             <div class="dropdown-divider"></div>
+            @endif
+            @if ($setting['cara pilih'][0] == 1)
             <section id="cara" class="pt-4 row justify-content-center">
                 <div class="col-6">
-                    <h4 class="text-center mb-3">&nbsp;</h4>
                     <h1 class="text-center brand-text font-weight-bold mb-3">Cara Memilih</h1>
                 </div>
                 <div class="col-12 text-center">
                     <div class="dropdown-divider"></div>
-                    <img class="img-fluid" src="{{asset('/images/tata-cara.jpg')}}">
+                    <img class="img-fluid" src="{{asset('/images/tata-cara/tata-cara.jpg')}}">
                 </div>
             </section>
             <div class="dropdown-divider"></div>
+            @endif
             <section id="tentang" class="row pt-4 justify-content-center">
                 <div class="col-12">
-                    <h4 class="text-center mb-3">&nbsp;</h4>
                     <h1 class="text-center brand-text font-weight-bold mb-3">Tentang</h1>
                     <div class="col-12">
                         <div class="dropdown-divider mb-3"></div>

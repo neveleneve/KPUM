@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pemilih;
 use App\Suara;
 use App\Admin;
+use App\Setting;
 use App\Visimisi;
 use App\Waktu;
 use Illuminate\Http\Request;
@@ -15,64 +16,25 @@ class GuestController extends Controller
 {
     public function dashboard()
     {
-        
-        $data = Admin::where('username', 'akimilakuo')->count();
-        if ($data == 0) {
-            Admin::create([
-                'nama' => 'Master Administrator',
-                'username' => 'akimilakuo',
-                'password' => Hash::make('akimilakuo'),
-                'level' => '0',
-                'status' => '1'
-            ]);
-        }
-
-        $buka = Waktu::where('nama', 'Buka')->count();
-        $tutup = Waktu::where('nama', 'Tutup')->count();
-
-        if ($buka == 0 && $tutup == 0) {
-            Waktu::create([
-                'nama' => 'Buka',
-                'inttanggal' => 1611594000
-            ]);
-            Waktu::create([
-                'nama' => 'Tutup',
-                'inttanggal' => 1611680400
-            ]);
-        } elseif ($buka == 0) {
-            Waktu::where('nama', 'Buka')->delete();
-            Waktu::create([
-                'nama' => 'Buka',
-                'inttanggal' => 1611594000
-            ]);
-            Waktu::create([
-                'nama' => 'Tutup',
-                'inttanggal' => 1611680400
-            ]);
-        } elseif ($tutup == 0) {
-            Waktu::where('nama', 'Tutup')->delete();
-            Waktu::create([
-                'nama' => 'Buka',
-                'inttanggal' => 1611594000
-            ]);
-            Waktu::create([
-                'nama' => 'Tutup',
-                'inttanggal' => 1611680400
-            ]);
-        }
         $datacalon = Visimisi::all()->sortBy('no_urut');
         $datasuarapersonal = null;
         $suaramasuk = Suara::sum('jml_suara');
-
         $waktututup = Waktu::where('nama', 'Tutup')->get();
-
         $jumlah_pemilih = Pemilih::count();
         $jumlah_pemilih_belum = Pemilih::where('status', 0)->count();
         $jumlah_pemilih_sudah = Pemilih::where('status', 1)->count();
         $jumlah_kandidat = Visimisi::count();
         $jumlah_suara = Suara::all();
         $jumlah_kandidat_suara = Suara::all();
-
+        $setting = Setting::all();
+        $o = 0;
+        foreach ($setting as $key) {
+            $settings[$key['nama']] = [
+                $key['status'],
+            ];
+            $o++;
+        }
+        // dd($settings);
         for ($i = 0; $i < $jumlah_kandidat_suara->count(); $i++) {
             $jumlah_suara[$i] = Suara::where('no_urut', $i + 1)->sum('jml_suara');
         }
@@ -86,6 +48,7 @@ class GuestController extends Controller
             'datasuarapersonal' => $datasuarapersonal,
             'suaramasuk' => $suaramasuk,
             'tutup' => $waktututup,
+            'setting' => $settings,
         ]);
     }
 
@@ -94,8 +57,8 @@ class GuestController extends Controller
         $ceknim = Pemilih::where('nim', $req->nim)->get();
         if (count($ceknim) == 0) {
             return redirect('/cek-voter')->with('nim', $req->nim)->with('tiada', 'Data Pemilih Tidak Terdaftar');
-        }else {
-            return redirect('/cek-voter')->with('nim', $req->nim)->with('ada', 'Data Pemilih')->with('data', $ceknim);            
+        } else {
+            return redirect('/cek-voter')->with('nim', $req->nim)->with('ada', 'Data Pemilih')->with('data', $ceknim);
         }
     }
 

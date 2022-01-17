@@ -7,6 +7,7 @@ use App\Pemilih;
 use App\Suara;
 use App\Visimisi;
 use App\Admin;
+use App\Setting;
 use App\Waktu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class AdminController extends Controller
 {
     public function randomstringlah()
     {
-        $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
+        $randomString = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
         return $randomString;
     }
 
@@ -241,6 +242,10 @@ class AdminController extends Controller
 
     public function adminsettingview()
     {
+        $setting = Setting::all();
+        foreach ($setting as $key) {
+            # code...
+        }
         $databuka = Waktu::where('nama', 'Buka')->get();
         $datatutup = Waktu::where('nama', 'Tutup')->get();
 

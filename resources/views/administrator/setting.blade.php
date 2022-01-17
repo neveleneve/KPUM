@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-md-6">
-                    <h1 class="m-0 text-dark">Pengaturan Data Personal Admin</h1>
+                    <h1 class="m-0 text-dark">Pengaturan</h1>
                 </div>
             </div>
         </div>
@@ -20,6 +20,11 @@
             <div class="row mb-3">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="card">
+                        <div class="card-header bg-secondary">
+                            <h4 class="font-weight-bold">
+                                Data Admin
+                            </h4>
+                        </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Username</label>
@@ -48,6 +53,11 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="card">
+                        <div class="card-header bg-secondary">
+                            <h4 class="font-weight-bold">
+                                Data Waktu Pemilihan
+                            </h4>
+                        </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Waktu Pembukaan Pemilihan</label>
@@ -60,9 +70,8 @@
                             <div class="form-group">
                                 <label>Status</label>
                                 @if (strtotime('now') > $datatutup[0]['inttanggal'])
-                                    <h6>Sudah Ditutup</h6>
-                                    @elseif(strtotime('now') < $databuka[0]['inttanggal'])
-                                    <h6>Belum Dibuka</h6>
+                                <h6>Sudah Ditutup</h6>
+                                @elseif(strtotime('now') < $databuka[0]['inttanggal']) <h6>Belum Dibuka</h6>
                                     @else
                                     <h6>Dibuka</h6>
                                     @endif
@@ -77,11 +86,40 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-secondary">
+                            <h4 class="font-weight-bold">
+                                Data Halaman Dashboard
+                            </h4>
+                        </div>
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group m-3">
+                                        <label>Tampilan Carousel</label>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="carousel">
+                                            <label class="custom-control-label" for="carousel">
+                                                Carousel Halaman Dashboard
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-3">
+                                        <label>Daftar Gambar Carousel</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>
 <div class="modal fade" id="modalwaktupemilihan">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Atur Waktu Pemilihan</h4>
@@ -94,14 +132,16 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="waktubuka">Waktu Buka Pemilihan</label>
-                        {{-- <input type="date" name="waktubuka" id="waktubuka" class="form-control" value="{{date('Y-m-d')}}">
+                        {{-- <input type="date" name="waktubuka" id="waktubuka" class="form-control"
+                            value="{{date('Y-m-d')}}">
                         --}}
                         <input type="datetime-local" name="waktubuka" id="waktubuka" class="form-control"
                             value="{{ date('Y-m-d', $databuka[0]['inttanggal']) .'T'. date('H:i', $databuka[0]['inttanggal'])}}">
                     </div>
                     <div class="form-group">
                         <label for="waktututup">Waktu Tutup Pemilihan</label>
-                        {{-- <input type="date" name="waktubuka" id="waktubuka" class="form-control" value="{{date('Y-m-d')}}">
+                        {{-- <input type="date" name="waktubuka" id="waktubuka" class="form-control"
+                            value="{{date('Y-m-d')}}">
                         --}}
                         <input type="datetime-local" name="waktututup" id="waktututup" class="form-control"
                             value="{{date('Y-m-d', $datatutup[0]['inttanggal']) .'T'. date('H:i', $datatutup[0]['inttanggal'])}}">

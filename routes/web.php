@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('/admin/administrator/update', 'AdminController@adminupdate');
     Route::post('/tambahadmin', 'AdminController@adminadd');
 
-    Route::get('/admin/setting/', 'AdminController@adminsettingview');
+    Route::get('/admin/setting', 'AdminController@adminsettingview');
     Route::get('/admin/setting/ubahpassword', function () {
         return view('administrator.ubahpassword');
     });
